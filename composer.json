@@ -1,5 +1,5 @@
 {
-    "name": "mouseketeers/silverstripe-consent-forms-userforms",
+    "name": "mouseketeers/silverstripe-consent-userforms",
     "description": "SilverStripe UserForms integration for silverstripe-consent-forms: CMS-editable consent fields and automatic consent recording",
     "type": "silverstripe-vendormodule",
     "keywords": [
@@ -8,7 +8,7 @@
         "GDPR",
         "userforms"
     ],
-    "homepage": "https://github.com/Mouseketeers/silverstripe-consent-forms-userforms",
+    "homepage": "https://github.com/Mouseketeers/silverstripe-consent-userforms",
     "license": "BSD-3-Clause",
     "authors": [
         {
@@ -17,8 +17,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/Mouseketeers/silverstripe-consent-forms-userforms/issues",
-        "source": "https://github.com/Mouseketeers/silverstripe-consent-forms-userforms"
+        "issues": "https://github.com/Mouseketeers/silverstripe-consent-userforms/issues",
+        "source": "https://github.com/Mouseketeers/silverstripe-consent-userforms"
     },
     "require": {
         "silverstripe/framework": "^4.0",

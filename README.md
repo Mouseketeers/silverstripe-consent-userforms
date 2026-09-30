@@ -1,4 +1,4 @@
-# silverstripe-consent-forms-userforms
+# silverstripe-consent-userforms
 
 SilverStripe UserForms integration for
 [mouseketeers/silverstripe-consent-forms](https://github.com/Mouseketeers/silverstripe-consent-forms).
@@ -6,17 +6,24 @@ SilverStripe UserForms integration for
 This add-on provides the CMS-editable consent fields and the automatic consent
 recording for [silverstripe/userforms](https://github.com/silverstripe/silverstripe-userforms).
 
-## Requirements
+## Supported SilverStripe versions
+
+| Branch        | SilverStripe | Install                                       |
+|---------------|-------------|-----------------------------------------------|
+| `master`      | 4           | `composer require mouseketeers/silverstripe-consent-userforms:^2` |
+| `support/1.x` | 3           | `composer require mouseketeers/silverstripe-consent-userforms:^1` |
+
+## Requirements (SilverStripe 4)
 
 - SilverStripe ^4
 - silverstripe/userforms ^5
 - mouseketeers/silverstripe-consent-forms ^3
 
-## Installation
+## Requirements (SilverStripe 3)
 
-```bash
-composer require mouseketeers/silverstripe-consent-forms-userforms
-```
+- SilverStripe ^3
+- silverstripe/userforms ^4
+- mouseketeers/silverstripe-consent-forms ^1
 
 ## What it provides
 
