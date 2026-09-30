@@ -1,14 +1,13 @@
 {
     "name": "mouseketeers/silverstripe-consent-userforms",
     "description": "SilverStripe UserForms integration for silverstripe-consent-forms: CMS-editable consent fields and automatic consent recording",
-    "type": "silverstripe-vendormodule",
+    "type": "silverstripe-module",
     "keywords": [
         "silverstripe",
         "consent",
         "GDPR",
         "userforms"
     ],
-    "homepage": "https://github.com/Mouseketeers/silverstripe-consent-userforms",
     "license": "BSD-3-Clause",
     "authors": [
         {
@@ -16,18 +15,12 @@
             "email": "henrik@mouseketeers.dk"
         }
     ],
-    "support": {
-        "issues": "https://github.com/Mouseketeers/silverstripe-consent-userforms/issues",
-        "source": "https://github.com/Mouseketeers/silverstripe-consent-userforms"
-    },
     "require": {
-        "silverstripe/framework": "^4.0",
-        "silverstripe/userforms": "^5.0",
-        "mouseketeers/silverstripe-consent-forms": "^3.0"
+        "silverstripe/userforms": "^4.0",
+        "mouseketeers/silverstripe-consent-forms": "^1.1"
     },
-    "autoload": {
-        "psr-4": {
-            "Mouseketeers\\ConsentForms\\": "src/"
-        }
+    "minimum-stability": "stable",
+    "extra": {
+        "installer-name": "consent-userforms"
     }
 }

@@ -1,6 +1,0 @@
-SilverStripe\ORM\DatabaseAdmin:
-  classname_value_remapping:
-    ConsentFormExtension: Mouseketeers\ConsentForms\ConsentFormExtension
-    EditableConsentCheckbox: Mouseketeers\ConsentForms\EditableConsentCheckbox
-    EditablePrivacyNoticeField: Mouseketeers\ConsentForms\EditablePrivacyNoticeField
-    EditableTermsAndPrivacyConsentCheckbox: Mouseketeers\ConsentForms\EditableTermsAndPrivacyConsentCheckbox

@@ -1,6 +1,6 @@
 ---
-Name: consent-forms-userforms
+Name: consent-userforms
 ---
-SilverStripe\UserForms\Control\UserDefinedFormController:
+Form:
   extensions:
-    - Mouseketeers\ConsentForms\ConsentFormExtension
+    - ConsentFormExtension
