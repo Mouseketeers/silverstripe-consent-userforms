@@ -27,7 +27,7 @@ class EditableTermsAndPrivacyConsentCheckbox extends EditableConsentCheckbox {
 				[
 					DropdownField::create(
 						'ConsentIDField',
-						_t(__CLASS__ . '.ConsentIDField', 'Consent ID Field'),
+						_t(self::class . '.ConsentIDField', 'Consent ID Field'),
 						$this->Parent()->Fields()->map('Name', 'Title')->toArray()
 					)
 				]
@@ -43,7 +43,7 @@ class EditableTermsAndPrivacyConsentCheckbox extends EditableConsentCheckbox {
 		$field = TermsAndPrivacyConsentCheckboxField::create($this->Name)
 			->setConsentIDFieldName($consentID);
 
-		$errorMessage = ($this->getErrorMessage()) ? $this->getErrorMessage() : $field->getCustomValidationMessage();
+		$errorMessage = $this->getErrorMessage() ?: $field->getCustomValidationMessage();
 		$field->setAttribute('data-rule-required', 'true');
 		$field->setAttribute('data-msg-required', $errorMessage);
 

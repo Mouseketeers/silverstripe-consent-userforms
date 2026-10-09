@@ -30,7 +30,7 @@ class EditableConsentCheckbox extends EditableFormField {
                 [
                     DropdownField::create(
                         'ConsentIDField',
-                        _t(__CLASS__.'.ConsentIDField', 'Consent ID Field'),
+                        _t(self::class.'.ConsentIDField', 'Consent ID Field'),
                       	$this->Parent()->Fields()->map('Name', 'Title')->toArray()
                     )
                 ]
@@ -48,7 +48,7 @@ class EditableConsentCheckbox extends EditableFormField {
 		$field = ConsentCheckboxField::create( $this->Name, $this->Title)
 			->setConsentIDFieldName($consentID);
 		
-		$errorMessage = ($this->getErrorMessage()) ? $this->getErrorMessage() : $field->getCustomValidationMessage();
+		$errorMessage = $this->getErrorMessage() ?: $field->getCustomValidationMessage();
 		$field->setAttribute('data-rule-required', 'true');
 		$field->setAttribute('data-msg-required', $errorMessage);
 		
