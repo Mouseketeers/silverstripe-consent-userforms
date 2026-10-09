@@ -22,7 +22,7 @@ class EditableConsentCheckbox extends EditableFormField {
 
     public function getCMSFields()
     {
-        $this->beforeUpdateCMSFields(function ($fields) {
+        $this->beforeUpdateCMSFields(function ($fields): void {
             $fields->addFieldsToTab(
                 'Root.Main',
                 [
