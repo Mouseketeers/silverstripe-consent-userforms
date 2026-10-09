@@ -20,6 +20,7 @@ class EditablePrivacyNoticeField extends EditableFormField {
 	public function populateDefaults() {
 		parent::populateDefaults();
 		$this->Title = self::$singular_name;
+		return $this;
 	}
 
 	public function getFormField() {

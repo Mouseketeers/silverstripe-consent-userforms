@@ -18,6 +18,7 @@ class EditableTermsAndPrivacyConsentCheckbox extends EditableConsentCheckbox {
 	public function populateDefaults() {
 		parent::populateDefaults();
 		$this->Title = self::$singular_name;
+		return $this;
 	}
 
 	public function getCMSFields() {
