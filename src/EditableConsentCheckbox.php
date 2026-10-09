@@ -3,9 +3,7 @@
 namespace Mouseketeers\ConsentForms;
 
 use SilverStripe\UserForms\Model\EditableFormField;
-use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\DropdownField;
-use SilverStripe\ORM\FieldType\DBField;
 
 
 class EditableConsentCheckbox extends EditableFormField {
