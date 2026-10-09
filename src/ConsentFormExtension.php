@@ -22,7 +22,7 @@ class ConsentFormExtension extends Extension
      */
     public function updateEmailData($emailData, $attachments)
     {
-        $controller = $this->owner;
+        $controller = $this->getOwner();
         if (!$controller instanceof UserDefinedFormController) {
             return;
         }
