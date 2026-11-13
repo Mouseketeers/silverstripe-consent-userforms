@@ -1,6 +1,8 @@
 <?php
 
-namespace Mouseketeers\ConsentForms;
+namespace Mouseketeers\ConsentUserForms;
+
+use Mouseketeers\ConsentForms\PrivacyNoticeField;
 
 use SilverStripe\UserForms\Model\EditableFormField;
 

@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mouseketeers\\ConsentForms\\": "src/"
+            "Mouseketeers\\ConsentUserForms\\": "src/"
         }
     }
 }

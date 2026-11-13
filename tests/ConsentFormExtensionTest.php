@@ -1,9 +1,9 @@
 <?php
 
-namespace Mouseketeers\ConsentForms\Tests;
+namespace Mouseketeers\ConsentUserForms\Tests;
 
 use Mouseketeers\ConsentForms\ConsentCheckboxField;
-use Mouseketeers\ConsentForms\ConsentFormExtension;
+use Mouseketeers\ConsentUserForms\ConsentFormExtension;
 use Mouseketeers\ConsentRecords\ConsentRecord;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPRequest;

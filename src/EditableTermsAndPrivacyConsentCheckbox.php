@@ -1,6 +1,9 @@
 <?php
 
-namespace Mouseketeers\ConsentForms;
+namespace Mouseketeers\ConsentUserForms;
+
+use Mouseketeers\ConsentForms\ConsentCheckboxField;
+use Mouseketeers\ConsentForms\TermsAndPrivacyConsentCheckboxField;
 
 class EditableTermsAndPrivacyConsentCheckbox extends EditableConsentCheckbox {
 

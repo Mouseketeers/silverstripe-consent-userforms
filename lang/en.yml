@@ -1,5 +1,5 @@
 en:
-  Mouseketeers\ConsentForms\EditableConsentCheckbox:
+  Mouseketeers\ConsentUserForms\EditableConsentCheckbox:
     PLURALNAME: 'Consent Checkboxes'
     SINGULARNAME: 'Consent Checkbox'
     ConsentIDField: 'Consent ID Field'
@@ -9,9 +9,9 @@ en:
     ConsentType: 'Consent type'
     ConsentTypeHelp: 'Stored with each consent record, e.g. Newsletter. Leave empty to derive it from the title.'
     ConsentOptional: 'Optional (the visitor may leave it unticked)'
-  Mouseketeers\ConsentForms\EditableTermsAndPrivacyConsentCheckbox:
+  Mouseketeers\ConsentUserForms\EditableTermsAndPrivacyConsentCheckbox:
     PLURALNAME: 'Terms and Privacy Consent Checkboxes'
     SINGULARNAME: 'Terms and Privacy Consent Checkbox'
-  Mouseketeers\ConsentForms\EditablePrivacyNoticeField:
+  Mouseketeers\ConsentUserForms\EditablePrivacyNoticeField:
     PLURALNAME: 'Privacy Notices'
     SINGULARNAME: 'Privacy Notice'

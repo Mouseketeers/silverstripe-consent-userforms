@@ -1,8 +1,8 @@
 <?php
 
-namespace Mouseketeers\ConsentForms\Tests;
+namespace Mouseketeers\ConsentUserForms\Tests;
 
-use Mouseketeers\ConsentForms\EditableConsentCheckbox;
+use Mouseketeers\ConsentUserForms\EditableConsentCheckbox;
 use SilverStripe\Dev\SapphireTest;
 
 class EditableConsentCheckboxTest extends SapphireTest
