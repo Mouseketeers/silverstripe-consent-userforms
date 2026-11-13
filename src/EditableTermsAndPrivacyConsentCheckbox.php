@@ -13,7 +13,6 @@ class EditableTermsAndPrivacyConsentCheckbox extends EditableConsentCheckbox {
 
 	private static $plural_name = 'Terms and Privacy Consent Checkboxes';
 
-	static $icon = 'consent-forms/images/privacy.png';
 
 	public function populateDefaults() {
 		parent::populateDefaults();

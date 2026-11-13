@@ -14,7 +14,6 @@ class EditableConsentCheckbox extends EditableFormField {
 
 	private static $plural_name = 'Consent Checkboxes';
 
-	static $icon = 'consent-forms/images/privacy.png';
 
     private static $db = [
     	'ConsentIDField' => 'Varchar(255)'
