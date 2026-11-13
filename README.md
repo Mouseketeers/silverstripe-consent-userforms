@@ -10,7 +10,8 @@ recording for [silverstripe/userforms](https://github.com/silverstripe/silverstr
 
 | Branch        | SilverStripe | Install                                                           |
 |---------------|--------------|-------------------------------------------------------------------|
-| `master`      | 5.4 and 6    | `composer require mouseketeers/silverstripe-consent-userforms:^3` |
+| `master`      | 6            | `composer require mouseketeers/silverstripe-consent-userforms:^4` |
+| `support/3.x` | 5.4          | `composer require mouseketeers/silverstripe-consent-userforms:^3` |
 | `support/2.x` | 4            | `composer require mouseketeers/silverstripe-consent-userforms:^2` |
 | `support/1.x` | 3            | `composer require mouseketeers/silverstripe-consent-userforms:^1` |
 
@@ -18,7 +19,8 @@ recording for [silverstripe/userforms](https://github.com/silverstripe/silverstr
 
 | Version | SilverStripe | silverstripe/userforms | mouseketeers/silverstripe-consent-forms | PHP   |
 |---------|--------------|------------------------|-----------------------------------------|-------|
-| 3.x     | ^5.4 or ^6   | ^6 or ^7               | ^4 or ^5                                | ^8.1  |
+| 4.x     | ^6           | ^7                     | ^5                                      | ^8.3  |
+| 3.x     | ^5.4         | ^6                     | ^4                                      | ^8.1  |
 | 2.x     | ^4           | ^5                     | ^3                                      |       |
 | 1.x     | ^3           | >=2 <5                 | ^1.1                                    |       |
 
@@ -34,3 +36,12 @@ The core `mouseketeers/silverstripe-consent-forms` package provides the
 reusable form fields (`ConsentCheckboxField`, `TermsAndPrivacyConsentCheckboxField`,
 `PrivacyNoticeField`) and `ConsentRecorder`, which can be used from any
 SilverStripe form without UserForms.
+
+## Consent field settings
+
+- **Consent ID Field** (required): the form field, usually the email, that identifies who gave the consent.
+- **Consent type**: stored with each record. Defaults to a slug of the field title.
+- **Optional**: lets the visitor leave the box unticked. Fields are mandatory by default.
+
+Only the consent itself is stored in the record. To also copy the whole submission into every record, set
+`Mouseketeers\ConsentForms\ConsentRecorder.store_form_data: true`.

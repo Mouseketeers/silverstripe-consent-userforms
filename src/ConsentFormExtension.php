@@ -11,8 +11,10 @@ use SilverStripe\UserForms\Control\UserDefinedFormController;
  *
  * Registered on {@link UserDefinedFormController} (not RequestHandler) so it
  * never runs for ordinary pages, login or error controllers that also handle a
- * `Form` action. The hook is fired once per successfully validated submission
- * with the rendered form fields rather than the editable CMS field models.
+ * `Form` action. UserForms fires `updateEmailData` once per submission (before
+ * the recipient loop, so it runs even with no or several recipients). Its data
+ * carries the SubmittedForm, whose ID is stored on each record; that ID is 0
+ * when the form has saving of submissions disabled.
  */
 class ConsentFormExtension extends Extension
 {
@@ -46,6 +48,9 @@ class ConsentFormExtension extends Extension
             }
         }
 
-        ConsentRecorder::record($form->Fields(), $submitted);
+        ConsentRecorder::record($form->Fields(), $submitted, [
+            'Source' => 'userform',
+            'SubmissionID' => (int) ($emailData['SubmittedForm']->ID ?? 0),
+        ]);
     }
 }

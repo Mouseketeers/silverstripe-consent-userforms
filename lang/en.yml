@@ -3,6 +3,12 @@ en:
     PLURALNAME: 'Consent Checkboxes'
     SINGULARNAME: 'Consent Checkbox'
     ConsentIDField: 'Consent ID Field'
+    ConsentIDFieldEmpty: '(select a field)'
+    ConsentIDFieldHelp: 'The field (usually the email) that identifies who gave the consent.'
+    ConsentIDFieldRequired: 'Select the field that identifies who gives the consent.'
+    ConsentType: 'Consent type'
+    ConsentTypeHelp: 'Stored with each consent record, e.g. Newsletter. Leave empty to derive it from the title.'
+    ConsentOptional: 'Optional (the visitor may leave it unticked)'
   Mouseketeers\ConsentForms\EditableTermsAndPrivacyConsentCheckbox:
     PLURALNAME: 'Terms and Privacy Consent Checkboxes'
     SINGULARNAME: 'Terms and Privacy Consent Checkbox'

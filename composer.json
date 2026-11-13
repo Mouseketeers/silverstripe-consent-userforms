@@ -25,6 +25,9 @@
         "silverstripe/userforms": "^5.0",
         "mouseketeers/silverstripe-consent-forms": "^3.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7 || ^9.5"
+    },
     "autoload": {
         "psr-4": {
             "Mouseketeers\\ConsentForms\\": "src/"
