@@ -84,21 +84,21 @@ class ConsentRetentionExtensionTest extends SapphireTest
         return [$draftFile(), $submission];
     }
 
-    public function testUploadedFilesAreKeptByDefault()
+    public function testUploadedFilesAreDeletedWithTheSubmissionByDefault()
     {
+        [$file] = $this->purgeSubmissionWithUpload();
+
+        $this->assertNull($file);
+    }
+
+    public function testUploadedFilesCanBeKept()
+    {
+        Config::modify()->set(ConsentRetentionExtension::class, 'delete_uploaded_files', false);
+
         [$file, $submission] = $this->purgeSubmissionWithUpload();
 
         $this->assertNotNull($file, 'the uploaded file is not deleted');
         $this->assertSame(0, SubmittedFileField::get()->filter('ParentID', $submission->ID)->count());
-    }
-
-    public function testUploadedFilesCanBeDeletedWithTheSubmission()
-    {
-        Config::modify()->set(ConsentRetentionExtension::class, 'delete_uploaded_files', true);
-
-        [$file] = $this->purgeSubmissionWithUpload();
-
-        $this->assertNull($file);
     }
 
     public function testMissingSubmissionIsNotAnError()
