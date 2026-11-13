@@ -18,16 +18,8 @@ class EditableTermsAndPrivacyConsentCheckbox extends EditableConsentCheckbox {
 		return $this;
 	}
 
-	public function getFormField() {
-		$consentID = $this->ConsentIDField;
-
-		$field = TermsAndPrivacyConsentCheckboxField::create($this->Name)
-			->setConsentIDFieldName($consentID);
-
-		$errorMessage = $this->getErrorMessage() ?: $field->getCustomValidationMessage();
-		$field->setAttribute('data-rule-required', 'true');
-		$field->setAttribute('data-msg-required', $errorMessage);
-
-		return $field;
+	protected function createConsentField(): ConsentCheckboxField
+	{
+		return TermsAndPrivacyConsentCheckboxField::create($this->Name);
 	}
 }

@@ -37,18 +37,23 @@ class EditableConsentCheckbox extends EditableFormField {
         return parent::getCMSFields();
     }
 
-	public function getFormField() 
+	public function getFormField()
 	{
-		
-		$consentID = $this->ConsentIDField;
+		$field = $this->createConsentField()
+			->setConsentIDFieldName($this->ConsentIDField);
 
-		$field = ConsentCheckboxField::create( $this->Name, $this->Title)
-			->setConsentIDFieldName($consentID);
-		
 		$errorMessage = $this->getErrorMessage() ?: $field->getCustomValidationMessage();
 		$field->setAttribute('data-rule-required', 'true');
 		$field->setAttribute('data-msg-required', $errorMessage);
-		
+
 		return $field;
+	}
+
+	/**
+	 * Subclasses override this to use another consent field class.
+	 */
+	protected function createConsentField(): ConsentCheckboxField
+	{
+		return ConsentCheckboxField::create($this->Name, $this->Title);
 	}
 }
