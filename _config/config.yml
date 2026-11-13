@@ -4,3 +4,9 @@ Name: consent-userforms
 SilverStripe\UserForms\Control\UserDefinedFormController:
   extensions:
     - Mouseketeers\ConsentUserForms\ConsentFormExtension
+---
+Name: consent-userforms-retention
+---
+Mouseketeers\ConsentRecords\ConsentRetention:
+  extensions:
+    - Mouseketeers\ConsentUserForms\ConsentRetentionExtension

@@ -24,7 +24,8 @@
         "silverstripe/framework": "^6",
         "silverstripe/userforms": "^7",
         "mouseketeers/silverstripe-consent-forms": "^5",
-        "php": "^8.3"
+        "php": "^8.3",
+        "mouseketeers/silverstripe-consent-records": "^5"
     },
     "require-dev": {
         "phpunit/phpunit": "^11"
