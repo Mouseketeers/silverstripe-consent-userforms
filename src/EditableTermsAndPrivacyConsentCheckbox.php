@@ -2,8 +2,6 @@
 
 namespace Mouseketeers\ConsentForms;
 
-use SilverStripe\Forms\DropdownField;
-
 
 class EditableTermsAndPrivacyConsentCheckbox extends EditableConsentCheckbox {
 
@@ -18,23 +16,6 @@ class EditableTermsAndPrivacyConsentCheckbox extends EditableConsentCheckbox {
 		parent::populateDefaults();
 		$this->Title = self::$singular_name;
 		return $this;
-	}
-
-	public function getCMSFields() {
-		$this->beforeUpdateCMSFields(function ($fields): void {
-			$fields->addFieldsToTab(
-				'Root.Main',
-				[
-					DropdownField::create(
-						'ConsentIDField',
-						_t(self::class . '.ConsentIDField', 'Consent ID Field'),
-						$this->Parent()->Fields()->map('Name', 'Title')->toArray()
-					)
-				]
-			);
-		});
-
-		return parent::getCMSFields();
 	}
 
 	public function getFormField() {
