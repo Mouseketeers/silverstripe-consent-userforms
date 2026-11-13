@@ -49,8 +49,9 @@ When consent-records purges records (`sake tasks:consent-retention`, or its sche
 submission each record points to is deleted too, with its field values. That also makes
 `--consent-id=jo@example.com` remove Jo's submission, not just the consent record.
 
-- Uploaded files are **kept** by default, even though UserForms normally deletes a submission's files with it. They stay in assets, unlinked, so remove them yourself when you no longer need them. To delete them with the submission instead:
-  `Mouseketeers\ConsentUserForms\ConsentRetentionExtension: delete_uploaded_files: true`.
+- Uploaded files are deleted with their submission, as UserForms does itself. To keep them, set
+  `Mouseketeers\ConsentUserForms\ConsentRetentionExtension: delete_uploaded_files: false`; they then stay in
+  assets, linked to nothing, and you remove them yourself.
 - Only submissions linked to a consent record are reached. A form with no consent field leaves no record,
   so its submissions need their own cleanup.
 - A submission shared by several consent boxes is deleted once; one that is already gone is skipped.

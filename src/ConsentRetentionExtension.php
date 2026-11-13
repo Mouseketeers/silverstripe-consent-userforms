@@ -11,10 +11,10 @@ use SilverStripe\UserForms\Model\Submission\SubmittedForm;
  * When consent records are purged (by age, or by ConsentID for an erasure request),
  * also deletes the UserForms submissions they point to, with their field values.
  *
- * Uploaded files are kept by default. UserForms deletes a submission's files together
- * with the submission (SubmittedFileField cascades the delete), so this detaches them
- * first. They stay in assets, no longer linked to anything: remove them yourself, or set
- * delete_uploaded_files to true to delete them with the submission.
+ * Uploaded files are deleted with their submission, as UserForms does itself
+ * (SubmittedFileField cascades the delete). To keep them instead, set
+ * delete_uploaded_files to false: they are then detached first and stay in assets,
+ * linked to nothing, for you to remove yourself.
  *
  * Only submissions of records written by this module (Source 'userform') are
  * touched. A submission whose form has no consent field has no record, so it is
@@ -27,7 +27,7 @@ class ConsentRetentionExtension extends Extension
      *
      * @config
      */
-    private static $delete_uploaded_files = false;
+    private static $delete_uploaded_files = true;
 
     /**
      * @param \Mouseketeers\ConsentRecords\ConsentRecord[] $records
