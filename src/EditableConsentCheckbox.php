@@ -28,14 +28,31 @@ class EditableConsentCheckbox extends EditableFormField {
                     DropdownField::create(
                         'ConsentIDField',
                         _t(self::class.'.ConsentIDField', 'Consent ID Field'),
-                      	$this->Parent()->Fields()->map('Name', 'Title')->toArray()
-                    )
+                        $this->getSiblingFieldOptions()
+                    )->setEmptyString('(none)')
                 ]
             );
         });
 
         return parent::getCMSFields();
     }
+
+	/**
+	 * The other fields on the form, as Name => Title. Empty while the field is
+	 * not yet attached to a form.
+	 */
+	protected function getSiblingFieldOptions(): array
+	{
+		$parent = $this->Parent();
+		if (!$parent || !$parent->exists()) {
+			return [];
+		}
+
+		$options = $parent->Fields()->map('Name', 'Title')->toArray();
+		unset($options[$this->Name]);
+
+		return $options;
+	}
 
 	public function getFormField()
 	{
