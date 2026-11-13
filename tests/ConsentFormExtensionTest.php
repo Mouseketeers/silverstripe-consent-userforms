@@ -13,6 +13,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\TextField;
 use SilverStripe\UserForms\Control\UserDefinedFormController;
+use SilverStripe\UserForms\Model\Submission\SubmittedForm;
 use SilverStripe\UserForms\Model\Submission\SubmittedFormField;
 
 class ConsentFormExtensionTest extends SapphireTest
@@ -22,7 +23,7 @@ class ConsentFormExtensionTest extends SapphireTest
     public function testHiddenConsentFieldIsNotRecorded()
     {
         $count = $this->submit([
-            ['Name' => 'Email', 'Value' => 'a@example.com', 'Displayed' => true],
+            ['Name' => 'EditableEmailField_ab12', 'Value' => 'a@example.com', 'Displayed' => true],
             ['Name' => 'Newsletter', 'Value' => 1, 'Displayed' => false],
         ]);
 
@@ -32,11 +33,23 @@ class ConsentFormExtensionTest extends SapphireTest
     public function testDisplayedConsentFieldIsRecorded()
     {
         $count = $this->submit([
-            ['Name' => 'Email', 'Value' => 'a@example.com', 'Displayed' => true],
+            ['Name' => 'EditableEmailField_ab12', 'Value' => 'a@example.com', 'Displayed' => true],
             ['Name' => 'Newsletter', 'Value' => 1, 'Displayed' => true],
         ]);
 
         $this->assertSame(1, $count);
+    }
+
+    public function testRecordCarriesSourceAndSubmissionID()
+    {
+        $this->submit([
+            ['Name' => 'EditableEmailField_ab12', 'Value' => 'a@example.com', 'Displayed' => true],
+            ['Name' => 'Newsletter', 'Value' => 1, 'Displayed' => true],
+        ]);
+
+        $record = ConsentRecord::get()->first();
+        $this->assertSame('userform', $record->Source);
+        $this->assertSame(7, (int) $record->SubmissionID);
     }
 
     /**
@@ -46,8 +59,8 @@ class ConsentFormExtensionTest extends SapphireTest
     private function submit(array $submittedFields): int
     {
         $form = Form::create(null, 'Form', FieldList::create(
-            TextField::create('Email'),
-            ConsentCheckboxField::create('Newsletter', 'Send me news')->setConsentIDFieldName('Email')
+            TextField::create('EditableEmailField_ab12'),
+            ConsentCheckboxField::create('Newsletter', 'Send me news')->setConsentIDFieldName('EditableEmailField_ab12')
         ));
 
         $controller = $this->getMockBuilder(UserDefinedFormController::class)
@@ -64,7 +77,10 @@ class ConsentFormExtensionTest extends SapphireTest
         $extension = new ConsentFormExtension();
         $extension->setOwner($controller);
         $extension->updateEmailData(
-            ['Fields' => array_map(fn (array $row) => SubmittedFormField::create($row), $submittedFields)],
+            [
+                'SubmittedForm' => SubmittedForm::create(['ID' => 7]),
+                'Fields' => array_map(fn (array $row) => SubmittedFormField::create($row), $submittedFields),
+            ],
             []
         );
 
