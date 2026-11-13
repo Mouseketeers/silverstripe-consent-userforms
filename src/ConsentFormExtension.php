@@ -1,6 +1,8 @@
 <?php
 
-namespace Mouseketeers\ConsentForms;
+namespace Mouseketeers\ConsentUserForms;
+
+use Mouseketeers\ConsentForms\ConsentRecorder;
 
 use SilverStripe\Core\Extension;
 use SilverStripe\UserForms\Control\UserDefinedFormController;
