@@ -37,7 +37,7 @@ reusable form fields (`ConsentCheckboxField`, `TermsAndPrivacyConsentCheckboxFie
 `PrivacyNoticeField`) and `ConsentRecorder`, which can be used from any
 SilverStripe form without UserForms.
 
-## Upgrading from 3.0.x
+## Upgrading from earlier 2.x releases
 
 The classes moved from `Mouseketeers\ConsentForms` to `Mouseketeers\ConsentUserForms`, so this package no
 longer shares a namespace with consent-forms. Run `dev/build`: the old class names stored on existing form
