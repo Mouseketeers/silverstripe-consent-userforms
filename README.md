@@ -37,11 +37,23 @@ reusable form fields (`ConsentCheckboxField`, `TermsAndPrivacyConsentCheckboxFie
 `PrivacyNoticeField`) and `ConsentRecorder`, which can be used from any
 SilverStripe form without UserForms.
 
-## Upgrading from 3.0.x
+## Upgrading to 4.x
 
 The classes moved from `Mouseketeers\ConsentForms` to `Mouseketeers\ConsentUserForms`, so this package no
 longer shares a namespace with consent-forms. Run `dev/build`: the old class names stored on existing form
 fields are remapped automatically. Update any of your own code, config or templates that name these classes.
+
+## Retention
+
+When consent-records purges records (`sake tasks:consent-retention`, or its scheduled job), the UserForms
+submission each record points to is deleted too, with its field values. That also makes
+`--consent-id=jo@example.com` remove Jo's submission, not just the consent record.
+
+- Uploaded files are **kept** by default, even though UserForms normally deletes a submission's files with it. They stay in assets, unlinked, so remove them yourself when you no longer need them. To delete them with the submission instead:
+  `Mouseketeers\ConsentUserForms\ConsentRetentionExtension: delete_uploaded_files: true`.
+- Only submissions linked to a consent record are reached. A form with no consent field leaves no record,
+  so its submissions need their own cleanup.
+- A submission shared by several consent boxes is deleted once; one that is already gone is skipped.
 
 ## Consent field settings
 
