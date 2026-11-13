@@ -1,5 +1,10 @@
 SilverStripe\ORM\DatabaseAdmin:
   classname_value_remapping:
-    EditableConsentCheckbox: Mouseketeers\ConsentForms\EditableConsentCheckbox
-    EditablePrivacyNoticeField: Mouseketeers\ConsentForms\EditablePrivacyNoticeField
-    EditableTermsAndPrivacyConsentCheckbox: Mouseketeers\ConsentForms\EditableTermsAndPrivacyConsentCheckbox
+    # SS3-era unnamespaced names
+    EditableConsentCheckbox: Mouseketeers\ConsentUserForms\EditableConsentCheckbox
+    EditablePrivacyNoticeField: Mouseketeers\ConsentUserForms\EditablePrivacyNoticeField
+    EditableTermsAndPrivacyConsentCheckbox: Mouseketeers\ConsentUserForms\EditableTermsAndPrivacyConsentCheckbox
+    # Names used before the namespace moved out of consent-forms' Mouseketeers\ConsentForms
+    Mouseketeers\ConsentForms\EditableConsentCheckbox: Mouseketeers\ConsentUserForms\EditableConsentCheckbox
+    Mouseketeers\ConsentForms\EditablePrivacyNoticeField: Mouseketeers\ConsentUserForms\EditablePrivacyNoticeField
+    Mouseketeers\ConsentForms\EditableTermsAndPrivacyConsentCheckbox: Mouseketeers\ConsentUserForms\EditableTermsAndPrivacyConsentCheckbox
