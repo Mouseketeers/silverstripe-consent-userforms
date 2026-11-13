@@ -4,12 +4,15 @@ namespace Mouseketeers\ConsentUserForms\Tests;
 
 use Mouseketeers\ConsentRecords\ConsentRecord;
 use Mouseketeers\ConsentRecords\ConsentRetention;
+use Mouseketeers\ConsentUserForms\ConsentRetentionExtension;
 use SilverStripe\Assets\File;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\UserForms\Model\Submission\SubmittedFileField;
 use SilverStripe\UserForms\Model\Submission\SubmittedForm;
 use SilverStripe\UserForms\Model\Submission\SubmittedFormField;
 use SilverStripe\UserForms\Model\UserDefinedForm;
+use SilverStripe\Versioned\Versioned;
 
 class ConsentRetentionExtensionTest extends SapphireTest
 {
@@ -62,7 +65,7 @@ class ConsentRetentionExtensionTest extends SapphireTest
         $this->assertNotNull(SubmittedForm::get()->byID($submission->ID));
     }
 
-    public function testUploadedFilesAreKept()
+    private function purgeSubmissionWithUpload(): array
     {
         $submission = $this->submission('jo@example.com');
         $file = File::create(['Name' => 'cv.txt']);
@@ -70,10 +73,32 @@ class ConsentRetentionExtensionTest extends SapphireTest
         SubmittedFileField::create(['Name' => 'Upload', 'ParentID' => $submission->ID, 'UploadedFileID' => $file->ID])->write();
         $this->record('jo@example.com', 'userform', $submission->ID);
 
+        // Uploads are draft-only, so look at the draft stage.
+        $draftFile = fn () => Versioned::get_by_stage(File::class, Versioned::DRAFT)->byID($file->ID);
+        $this->assertNotNull($draftFile(), 'control: the file exists before the purge');
+
         ConsentRetention::purge(0, 'jo@example.com');
 
         $this->assertNull(SubmittedForm::get()->byID($submission->ID));
-        $this->assertNotNull(File::get()->byID($file->ID), 'the uploaded file is not deleted');
+
+        return [$draftFile(), $submission];
+    }
+
+    public function testUploadedFilesAreKeptByDefault()
+    {
+        [$file, $submission] = $this->purgeSubmissionWithUpload();
+
+        $this->assertNotNull($file, 'the uploaded file is not deleted');
+        $this->assertSame(0, SubmittedFileField::get()->filter('ParentID', $submission->ID)->count());
+    }
+
+    public function testUploadedFilesCanBeDeletedWithTheSubmission()
+    {
+        Config::modify()->set(ConsentRetentionExtension::class, 'delete_uploaded_files', true);
+
+        [$file] = $this->purgeSubmissionWithUpload();
+
+        $this->assertNull($file);
     }
 
     public function testMissingSubmissionIsNotAnError()
