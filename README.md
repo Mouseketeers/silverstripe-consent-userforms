@@ -8,22 +8,19 @@ recording for [silverstripe/userforms](https://github.com/silverstripe/silverstr
 
 ## Supported SilverStripe versions
 
-| Branch        | SilverStripe | Install                                       |
-|---------------|-------------|-----------------------------------------------|
-| `master`      | 4           | `composer require mouseketeers/silverstripe-consent-userforms:^2` |
-| `support/1.x` | 3           | `composer require mouseketeers/silverstripe-consent-userforms:^1` |
+| Branch        | SilverStripe | Install                                                           |
+|---------------|--------------|-------------------------------------------------------------------|
+| `master`      | 5.4 and 6    | `composer require mouseketeers/silverstripe-consent-userforms:^3` |
+| `support/2.x` | 4            | `composer require mouseketeers/silverstripe-consent-userforms:^2` |
+| `support/1.x` | 3            | `composer require mouseketeers/silverstripe-consent-userforms:^1` |
 
-## Requirements (SilverStripe 4)
+## Requirements
 
-- SilverStripe ^4
-- silverstripe/userforms ^5
-- mouseketeers/silverstripe-consent-forms ^3
-
-## Requirements (SilverStripe 3)
-
-- SilverStripe ^3
-- silverstripe/userforms ^4
-- mouseketeers/silverstripe-consent-forms ^1
+| Version | SilverStripe | silverstripe/userforms | mouseketeers/silverstripe-consent-forms | PHP   |
+|---------|--------------|------------------------|-----------------------------------------|-------|
+| 3.x     | ^5.4 or ^6   | ^6 or ^7               | ^4 or ^5                                | ^8.1  |
+| 2.x     | ^4           | ^5                     | ^3                                      |       |
+| 1.x     | ^3           | >=2 <5                 | ^1.1                                    |       |
 
 ## What it provides
 
