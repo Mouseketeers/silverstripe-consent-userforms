@@ -22,6 +22,9 @@ class EditablePrivacyNoticeField extends EditableFormField {
     }
 
     public function getFormField() {
-        return PrivacyNoticeField::create($this->Name);
+        $field = PrivacyNoticeField::create($this->Name);
+        $this->doUpdateFormField($field);
+
+        return $field;
     }
 }
