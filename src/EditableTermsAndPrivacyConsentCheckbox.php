@@ -14,6 +14,11 @@ class EditableTermsAndPrivacyConsentCheckbox extends EditableConsentCheckbox {
         return $this;
     }
 
+    protected function getDefaultConsentType(): ?string
+    {
+        return null; // TermsAndPrivacyConsentCheckboxField has its own fixed type
+    }
+
     protected function createConsentField(): ConsentCheckboxField
     {
         return TermsAndPrivacyConsentCheckboxField::create($this->Name);
