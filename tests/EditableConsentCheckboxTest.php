@@ -39,4 +39,34 @@ class EditableConsentCheckboxTest extends SapphireTest
         $this->assertSame('Newsletter', $field->getConsentType());
         $this->assertSame('EditableEmailField_cd34', $field->getConsentIDFieldName());
     }
+
+    public function testCmsSettingsAreApplied()
+    {
+        $field = EditableConsentCheckbox::create([
+            'Name' => 'x', 'Title' => 'Send me news', 'RightTitle' => 'Help text', 'ExtraClass' => 'my-class',
+        ])->getFormField();
+
+        $this->assertSame('Help text', $field->RightTitle());
+        $this->assertStringContainsString('my-class', $field->extraClass());
+    }
+
+    public function testCmsRequiredBoxDoesNotMakeAnOptionalConsentMandatory()
+    {
+        $field = EditableConsentCheckbox::create([
+            'Name' => 'x', 'Title' => 'Send me news', 'ConsentOptional' => 1, 'Required' => 1,
+        ])->getFormField();
+
+        $this->assertNull($field->getAttribute('data-rule-required'));
+        $this->assertStringNotContainsString('requiredField', $field->extraClass());
+        $this->assertTrue($field->validate()->isValid());
+    }
+
+    public function testOwnMessageIsKeptUnlessTheEditorWroteOne()
+    {
+        $default = EditableConsentCheckbox::create(['Name' => 'x', 'Title' => 'Send me news'])->getFormField();
+        $custom = EditableConsentCheckbox::create(['Name' => 'x', 'Title' => 'Send me news', 'CustomErrorMessage' => 'Tick it'])->getFormField();
+
+        $this->assertSame('Please give your consent', $default->getCustomValidationMessage());
+        $this->assertSame('Tick it', $custom->getCustomValidationMessage());
+    }
 }

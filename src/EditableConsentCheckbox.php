@@ -97,10 +97,23 @@ class EditableConsentCheckbox extends EditableFormField {
             $field->setConsentType($type);
         }
 
+        // Applies Right Title, extra class, placeholder, show-on-load and the extension hooks.
+        $this->doUpdateFormField($field);
+
+        // doUpdateFormField() replaces the message with UserForms' generic "... is required";
+        // keep ours unless the editor wrote a custom one.
+        if (!$this->CustomErrorMessage) {
+            $field->setCustomValidationMessage(null);
+        }
+
         if ($field->isConsentRequired()) {
-            $errorMessage = $this->getErrorMessage() ?: $field->getCustomValidationMessage();
             $field->setAttribute('data-rule-required', 'true');
-            $field->setAttribute('data-msg-required', $errorMessage);
+            $field->setAttribute('data-msg-required', $field->getCustomValidationMessage());
+        } else {
+            // The CMS "Required" box must not make an optional consent mandatory.
+            $field->removeExtraClass('requiredField');
+            $field->setAttribute('data-rule-required', null);
+            $field->setAttribute('data-msg-required', null);
         }
 
         return $field;
