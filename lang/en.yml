@@ -1,10 +1,11 @@
 en:
-  EditableConsentCheckbox:
+  Mouseketeers\ConsentForms\EditableConsentCheckbox:
     PLURALNAME: 'Consent Checkboxes'
     SINGULARNAME: 'Consent Checkbox'
-  EditableTermsAndPrivacyConsentCheckbox:
-    PLURALNAME: 'Terms and Privacy Checkboxes'
-    SINGULARNAME: 'Terms and Privacy Checkbox'
-  EditablePrivacyNoticeField:
+    ConsentIDField: 'Consent ID Field'
+  Mouseketeers\ConsentForms\EditableTermsAndPrivacyConsentCheckbox:
+    PLURALNAME: 'Terms and Privacy Consent Checkboxes'
+    SINGULARNAME: 'Terms and Privacy Consent Checkbox'
+  Mouseketeers\ConsentForms\EditablePrivacyNoticeField:
     PLURALNAME: 'Privacy Notices'
     SINGULARNAME: 'Privacy Notice'
