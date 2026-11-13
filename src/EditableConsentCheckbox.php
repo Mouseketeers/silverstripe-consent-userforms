@@ -4,7 +4,7 @@ namespace Mouseketeers\ConsentUserForms;
 
 use Mouseketeers\ConsentForms\ConsentCheckboxField;
 
-use SilverStripe\Core\Validation\ValidationResult;
+use SilverStripe\ORM\ValidationResult;
 use SilverStripe\UserForms\Model\EditableFormField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;

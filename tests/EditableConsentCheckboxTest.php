@@ -4,6 +4,7 @@ namespace Mouseketeers\ConsentUserForms\Tests;
 
 use Mouseketeers\ConsentUserForms\EditableConsentCheckbox;
 use SilverStripe\Dev\SapphireTest;
+use SilverStripe\Forms\RequiredFields;
 
 class EditableConsentCheckboxTest extends SapphireTest
 {
@@ -58,7 +59,7 @@ class EditableConsentCheckboxTest extends SapphireTest
 
         $this->assertNull($field->getAttribute('data-rule-required'));
         $this->assertStringNotContainsString('requiredField', $field->extraClass());
-        $this->assertTrue($field->validate()->isValid());
+        $this->assertTrue($field->validate(new RequiredFields()));
     }
 
     public function testOwnMessageIsKeptUnlessTheEditorWroteOne()
